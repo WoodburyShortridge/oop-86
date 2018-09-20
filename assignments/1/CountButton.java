@@ -1,5 +1,11 @@
 /*
  * Woodbury Shortridge
+ * woodbury.shortridge@tufts.edu
+ *
+ * The count button class extends JButton by adding an event listener that counts clicks and prints to the terminal.
+ * The counted clicks are displayed on the button. There are methods for initiating the label,
+ * starting count, and a protected method for resetting the count.
+ *
  */
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
