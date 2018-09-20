@@ -8,5 +8,5 @@ Thi is a Java/Swing program that creates a window and then creates and displays 
 ### Compile
 ```javac Main.java```
 
-### run
+### Run
 ```java Main```
