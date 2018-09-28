@@ -1,0 +1,21 @@
+Assignment 2
+Woodbury Shrtridge | woodbury.shortridge@tufts.edu
+
+Overview:
+This program is a satellite control user interface. The satellite view will show many satellites moving around in space.
+The operator can use the scroll bar to move the view horizontally and the zoom slider to zoom in and out of space.
+If a satellite needs to be moved, the operator can select the troubling satellite with using the arrow buttons, engage it
+with the engage button, and then move it again with the arrow buttons. If a satellite is really bad the operator and destroy
+it with the red destroy button.
+
+The Main.java file extends JFrame and creates the main frame for the program. This fame is closed when the operator exits the
+program. The major widgets are added to the program in the main frame: satellite view, control view, and zoom slider. Each of the
+views extent Jpanel. The control view contains several custom objects: two instances of arrow buttons, a delete and engage action button,
+and the horizontal scroll bar. The satellite view contains a paint method for graphics.
+
+Compile:
+$ javac Main.java
+(using Main.java, SatelliteView.java, ScrollBar.java, ZoomSlider.java, ControlView.java, ArrowButton.java, and ActionButton.java)
+
+Run:
+$ java Main
