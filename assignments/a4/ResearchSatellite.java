@@ -18,11 +18,12 @@ import java.lang.Math;
 
 public class ResearchSatellite extends Satellite {
 
-  public ResearchSatellite(int x, int y) {
-    super(x, y);
+  public ResearchSatellite(int x, int y, int id) {
+    super(x, y, id);
   }
 
   // This is the draw callback
+  @Override
   public void paintComponent (Graphics g) {
       super.paintComponent(g);
       Graphics2D g2 = (Graphics2D) g;

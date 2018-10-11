@@ -19,13 +19,16 @@ import java.lang.Math;
 abstract class Satellite extends JPanel {
     protected int posX;
     protected int posY;
+    protected int sID;
 
-    public Satellite(int x, int y) {
+    public Satellite(int x, int y, int id) {
       posX = x;
       posY = y;
+      sID = id;
     }
 
-    // This is where the draw callback will be
+    // This is the draw callback
+    @Override
     public void paintComponent (Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
@@ -39,5 +42,10 @@ abstract class Satellite extends JPanel {
         g2.setColor(Color.red);
         g2.setStroke(new BasicStroke(4));
         g2.draw(new Line2D.Double(posX-14, posY-2.5, posX+14, posY-2.5));
+
+        // draw ID
+        g2.setColor(Color.white);
+        g2.setFont(new Font("Arial", Font.BOLD, 14));
+        g2.drawString(Integer.toString(sID), posX - 5, posY + 5);
     }
 }

@@ -25,6 +25,11 @@ public class Main extends JFrame {
 
         // Button to clear space
         JButton clearSpace = new JButton("Clear space");
+        clearSpace.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+    				model.clearSpace();
+    			}
+        });
 
         mainFrame.add(clearSpace, BorderLayout.NORTH);
 

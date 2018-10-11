@@ -16,9 +16,9 @@ import javax.swing.*;
 import java.util.*;
 import java.lang.Math;
 
-public class WeatherSatellite extends Satellite {
+public class CommunicationSatellite extends Satellite {
 
-  public WeatherSatellite(int x, int y, int id) {
+  public CommunicationSatellite(int x, int y, int id) {
     super(x, y, id);
   }
 
@@ -27,10 +27,10 @@ public class WeatherSatellite extends Satellite {
       super.paintComponent(g);
       Graphics2D g2 = (Graphics2D) g;
       // draw wings
-      g2.setColor(Color.green);
-      g2.fill(new Ellipse2D.Double(posX-40,posY-15,25,25));
+      g2.setColor(Color.yellow);
+      g2.fill(new Ellipse2D.Double(posX-30,posY-20,15,30));
 
-      g2.setColor(Color.green);
-      g2.fill(new Ellipse2D.Double(posX+15,posY-15,25,25));
+      g2.setColor(Color.yellow);
+      g2.fill(new Ellipse2D.Double(posX+15,posY-20,15,30));
   }
 }
