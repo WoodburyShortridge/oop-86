@@ -5,23 +5,35 @@
  * Main class extends JFrame. This is the main frame for the control interface.
  *
  */
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+ import java.awt.*;
+ import java.awt.event.*;
+ import java.awt.geom.*;
+ import javax.swing.*;
 
-public class Main extends JFrame {
+public class Main extends JFrame implements ActionListener {
+    private int frame = 1;
+    private Model model;
+
     public static void main(String[] args) {
-        new Main();
+        java.awt.EventQueue.invokeLater (new Runnable() {
+          public void run() {
+ 		         new Main();
+           }
+       });
     }
 
     public Main() {
 
-        // main frame
-        JFrame mainFrame = new JFrame("Satellite Control UI");
+        // set size and visible
+        this.setSize(600,600);
+        this.setVisible(true);
 
-        Model model = new Model();
-        mainFrame.add(model, BorderLayout.CENTER);
+        // close on exit
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+
+        model = new Model(this);
+        this.add(model, BorderLayout.CENTER);
 
         // Button to clear space
         JButton clearSpace = new JButton("Clear space");
@@ -30,14 +42,23 @@ public class Main extends JFrame {
     				model.clearSpace();
     			}
         });
+        this.add(clearSpace, BorderLayout.NORTH);
 
-        mainFrame.add(clearSpace, BorderLayout.NORTH);
+        // add control view
+        ControlView controlView = new ControlView(this);
+        this.add(controlView, BorderLayout.SOUTH);
 
-        // set size and visible
-        mainFrame.setSize(600,600);
-        mainFrame.setVisible(true);
+        Timer timer = new Timer (100, this); // 100 milliseconds
+      	timer.start();
+    }
 
-        // close on exit
-        mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    protected int getFrame () {
+      return frame;
+    }
+
+    // Like a clock tick
+    public void actionPerformed (ActionEvent e) {
+	     frame++;
+       model.repaint ();
     }
 }

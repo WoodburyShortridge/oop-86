@@ -21,25 +21,26 @@ implements ActionListener {
     }
 
     public Timeout () {
-	// Window setup
-	setSize (500, 500);
-	setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-	addKeyListener (this);
+      	// Window setup
+      	setSize (500, 500);
+      	setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 
-	// Put a Canvas in
-	canvas = new Canvas (this);
-	add (canvas);
+      	// Put a Canvas in
+      	canvas = new Canvas (this);
+      	add (canvas);
 
-	setVisible (true);
+      	setVisible (true);
 
-	// Start timer
-	Timer timer = new Timer (100, this); // 100 milliseconds
-	timer.start();
+      	// Start timer
+      	Timer timer = new Timer (100, this); // 100 milliseconds
+      	timer.start();
     }
 
-    public int getFrame () { return frame; }
+    public int getFrame () {
+      return frame;
+    }
       // Like a clock tick
-      public void actionPerformed (ActionEvent e) {
+    public void actionPerformed (ActionEvent e) {
 	     frame++;
        canvas.repaint ();
     }

@@ -8,8 +8,8 @@ implements ActionListener, KeyListener {
     /**
      * State of the animation, just a counter
      */
-    private int frame = 1; 
-    
+    private int frame = 1;
+
     private Canvas canvas;
 
     public static void main (String [] args) {
@@ -33,21 +33,22 @@ implements ActionListener, KeyListener {
 	setVisible (true);
 
 	// Start timer
-	Timer timer = new Timer (100, this); // 100 milliseconds 
-	timer.start(); 
+	Timer timer = new Timer (100, this); // 100 milliseconds
+	timer.start();
     }
 
-    public int getFrame () { return frame; } 
+    public int getFrame () {       System.out.println (frame);
+return frame; } 
 
     // Like a clock tick
-    public void actionPerformed (ActionEvent e) { 
-	frame++; 
-	canvas.repaint (); 
+    public void actionPerformed (ActionEvent e) {
+	frame++;
+	canvas.repaint ();
     }
 
     // Methods for KeyListener
-    public void keyPressed (KeyEvent e) { 
-	if (e.getKeyCode()==KeyEvent.VK_ESCAPE) System.exit (0); 
+    public void keyPressed (KeyEvent e) {
+	if (e.getKeyCode()==KeyEvent.VK_ESCAPE) System.exit (0);
     }
     public void keyReleased (KeyEvent e) { }
     public void keyTyped (KeyEvent e) { }

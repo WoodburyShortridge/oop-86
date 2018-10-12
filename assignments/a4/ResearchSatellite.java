@@ -18,20 +18,27 @@ import java.lang.Math;
 
 public class ResearchSatellite extends Satellite {
 
-  public ResearchSatellite(int x, int y, int id) {
-    super(x, y, id);
+  public ResearchSatellite(int x, int y, int id, int frame) {
+    super(x, y, id, frame);
   }
 
   // This is the draw callback
-  @Override
   public void paintComponent (Graphics g) {
       super.paintComponent(g);
       Graphics2D g2 = (Graphics2D) g;
-      // draw wings
-      g2.setColor(Color.blue);
-      g2.fill(new RoundRectangle2D.Double(posX-40,posY-10,25,15,5,5));
 
+      RoundRectangle2D.Double wing1 = new RoundRectangle2D.Double(posX-40,posY-10,25,15,5,5);
+      AffineTransform wing1Trans = new AffineTransform ();
+      wing1Trans.setToRotation (Math.toRadians(sFrame), posX, posY);
+      Shape wing1Shape = wing1Trans.createTransformedShape (wing1);
       g2.setColor(Color.blue);
-      g2.fill(new RoundRectangle2D.Double(posX+15,posY-10,25,15,5,5));
+      g2.fill(wing1Shape);
+
+      RoundRectangle2D.Double wing2 = new RoundRectangle2D.Double(posX+15,posY-10,25,15,5,5);
+      AffineTransform wing2Trans = new AffineTransform ();
+      wing2Trans.setToRotation (Math.toRadians(sFrame), posX, posY);
+      Shape wing2Shape = wing2Trans.createTransformedShape (wing2);
+      g2.setColor(Color.blue);
+      g2.fill(wing2Shape);
   }
 }
