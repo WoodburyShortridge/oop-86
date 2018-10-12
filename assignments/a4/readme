@@ -1,0 +1,39 @@
+Assignment 4
+Woodbury Shrtridge | woodbury.shortridge@tufts.edu
+
+Design Overview:
+This program is a satellite control user interface. The satellite view displays various types of satellites rotating in space:
+Research, Communications, and Weather satellites. The operator can launch more satellites into space using the ComboBox
+to select satellite type and clicking the launch button. In an emergency, the operator can click the clear space button to
+destroy all satellites.
+
+Outline:
+The Main.java file extends JFrame and creates the main frame for the program. This fame is closed when the operator exits the
+program. The major widgets are added to the program in the main frame: satellite model, control view, and clear button. The main
+frame also controls the timer that is used to animate the satellite model. The control view extends Jpanel and contains several custom objects:
+a label, a satellite selector combo box, and an add button. The satellite model is an object that holds the overall satellite data: position,
+type, ID, and rotation speed/direction. It also create and maintains the drawing canvas, provides the main redrawing routine for it, creates
+the specific satellites for the interface. Each satellite extends an abstract satellite class that stores satellite data and builds the Basic
+satellite body and ID tag. The different satellite classes extend this abstract by adding unique wings.
+
+Compile:
+$ javac *.java
+
+Run:
+$ java Main
+
+Usage:
+Select the satellite type you want to launch into space. Then click the launch button. In an emergency click the clear space button to
+destroy all satellites.
+
+structure:
+- Main.java
+    - ClearButton.java
+		- Model.java
+        - Satellite.java
+            - ResearchSatellite.java
+            - WeatherSatellite.java
+            - CommunicationSatellite.java
+    - ControlView.java
+        - SatelliteSelector.java
+        - AddButton.java

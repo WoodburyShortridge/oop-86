@@ -3,6 +3,9 @@
  * woodbury.shortridge@tufts.edu
  *
  * The control view class extends JPanel and organized the controls in a boarder layout.
+ * The border layout contains a label, AddButton, and SatelliteSelector.
+ * It also has the method for sending the selected satellite value to parent,
+ * when the add button is pressed.
  *
  */
 
@@ -11,23 +14,24 @@ import javax.swing.*;
 
 public class ControlView extends JPanel {
         Main parent;
+        SatelliteSelector ss;
     public ControlView(Main parent) {
         // This frame is used to organize the controls
         this.parent = parent;
         setLayout(new BorderLayout());
 
-        // create destry button and use html for red color
-        ActionButton destroyButton = new ActionButton("<html><font color=red>Destroy</font>");
-        // Method to add listener for printing
-        destroyButton.buttonPrint("Destroyed");
+        ss = new SatelliteSelector ();
+      	add (ss,BorderLayout.CENTER);
 
-        // create engage button and use html for red color
-        ActionButton engageButton = new ActionButton("<html><font color=green>Engage</font>");
-        // Method to add listener for printing
-        engageButton.buttonPrint("Engaged");
+        JLabel label = new JLabel ("Add Satellite Type:");
+      	add (label, BorderLayout.WEST);
 
-        // add controls to layout
-        this.add(destroyButton, BorderLayout.SOUTH);
-        this.add(engageButton, BorderLayout.CENTER);
+        AddButton ab = new AddButton ("Launch Satellite", this);
+      	add (ab, BorderLayout.EAST);
+    }
+
+    protected void addSatellite() {
+      String selectedSatellite = String.valueOf(ss.getSelectedItem());
+      parent.addSatellite(selectedSatellite);
     }
 }

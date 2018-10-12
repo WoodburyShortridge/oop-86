@@ -2,10 +2,11 @@
  * Woodbury Shortridge
  * woodbury.shortridge@tufts.edu
  *
- * The satellite view class extends JPanel and creates a paint method for graphics.
- * This class implements mouse listner for click events. The pain method is called on Each
- * click to either place a new satellite in space, or activate an existing satellite by
- * turning it green.
+ * The model class extends JPanel and creates a data store for each satellite.
+ * This class contains the main draw callback which creates the background
+ * and adds satellites based on the data stores for ID, Type, Possition, and Rotation speed/direction.
+ * The model class also has methods for adding satellites and clearing space along with a helper method
+ * for random integers.
  *
  */
 
@@ -28,25 +29,16 @@ public class Model extends JPanel {
     public Model(Main parent) {
       this.parent = parent;
 
-      satelliteCount = 10;
-      for (int i=0; i < satelliteCount; i++) {
-        satelliteList.add(i);
-        if ( i % 2 == 0 ) {
-          satelliteType.add("Research");
-        }
-        if ( i % 3 == 0 ) {
-          satelliteType.add("Communication");
-        }
-        else {
-          satelliteType.add("Weather");
-        }
-        Point pos = new Point(100 + 100*i,100 + 100*i);
-        satellitePos.add(pos);
-        randomList.add(randomInteger(1,5));
-      }
+      // start with 3 satellites
+      satelliteList.add(0);
+      satelliteType.add("Research");
+      Point posInit = new Point(250,250);
+      satellitePos.add(posInit);
+      randomList.add(randomInteger(-5,5));
+
     }
 
-    // This is the draw callback is
+    // This is the draw callback
     public void paintComponent (Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
@@ -60,7 +52,7 @@ public class Model extends JPanel {
           g2.fill(new Ellipse2D.Double(randomInteger(0,this.getWidth()),randomInteger(0,this.getHeight()),randomInteger(1,3),randomInteger(1,3)));
         }
 
-        // finally add satellites
+        // finally add satellites from data store
       	for(int id : satelliteList) {
           if (satelliteType.get(id) == "Research") {
             new ResearchSatellite((int)satellitePos.get(id).getX(), (int)satellitePos.get(id).getY(), id, parent.getFrame()*randomList.get(id)).paintComponent(g);
@@ -86,6 +78,18 @@ public class Model extends JPanel {
       satellitePos.clear();
 
       System.out.println ("Space Cleared");
+      this.repaint();
+    }
+    // method to add satellites
+    protected void addSatellite(String selectedSatellite) {
+      int size = satelliteList.size();
+      satelliteList.add(size);
+      satelliteType.add(selectedSatellite);
+      Point pos = new Point(this.getWidth() - randomInteger(1,this.getWidth()),this.getHeight() - randomInteger(1,this.getHeight()));
+      satellitePos.add(pos);
+      randomList.add(randomInteger(-5,5));
+
+      System.out.println (selectedSatellite + " Satellite Added");
       this.repaint();
     }
 }

@@ -2,10 +2,8 @@
  * Woodbury Shortridge
  * woodbury.shortridge@tufts.edu
  *
- * The satellite view class extends JPanel and creates a paint method for graphics.
- * This class implements mouse listner for click events. The pain method is called on Each
- * click to either place a new satellite in space, or activate an existing satellite by
- * turning it green.
+ * The research satellite class extends the parent Satellite class and creates a paint method specific for
+ * reaserch satellite graphics by adding two blue rectangle wings.
  *
  */
 

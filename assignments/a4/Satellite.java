@@ -2,10 +2,8 @@
  * Woodbury Shortridge
  * woodbury.shortridge@tufts.edu
  *
- * The satellite view class extends JPanel and creates a paint method for graphics.
- * This class implements mouse listner for click events. The pain method is called on Each
- * click to either place a new satellite in space, or activate an existing satellite by
- * turning it green.
+ * The Satellite abstract class extends Jpanel and creates the base data store and paint method for all three
+ * satellites. It draws the satellite bodies and ID tags.
  *
  */
 
@@ -55,8 +53,5 @@ abstract class Satellite extends JPanel {
         g2.setColor(Color.white);
         g2.setFont(new Font("Arial", Font.BOLD, 14));
         g2.drawString(Integer.toString(sID), posX - 5, posY + 5);
-
-        // g2.translate(posX, posY);
-        // g2.rotate(Math.toRadians(50), posX, posY);
     }
 }

@@ -2,9 +2,13 @@
  * Woodbury Shortridge
  * woodbury.shortridge@tufts.edu
  *
- * Main class extends JFrame. This is the main frame for the control interface.
+ * Main class extends JFrame and adds an ActionListener. This is the main frame for the satellite view and control interface.
+ * the main frame contains the clear space method and adds it to the layout. I also controls the satellite model graphics with a timer and
+ * has methods for getting frame number, and adding satellites.
+ * And it adds the control view to the bottom of the layout.
  *
  */
+
  import java.awt.*;
  import java.awt.event.*;
  import java.awt.geom.*;
@@ -36,12 +40,7 @@ public class Main extends JFrame implements ActionListener {
         this.add(model, BorderLayout.CENTER);
 
         // Button to clear space
-        JButton clearSpace = new JButton("Clear space");
-        clearSpace.addActionListener(new ActionListener() {
-          public void actionPerformed(ActionEvent e) {
-    				model.clearSpace();
-    			}
-        });
+        ClearButton clearSpace = new ClearButton("Clear space", this);
         this.add(clearSpace, BorderLayout.NORTH);
 
         // add control view
@@ -56,9 +55,17 @@ public class Main extends JFrame implements ActionListener {
       return frame;
     }
 
-    // Like a clock tick
+    // timer
     public void actionPerformed (ActionEvent e) {
 	     frame++;
        model.repaint ();
+    }
+
+    protected void clearSpace () {
+       model.clearSpace();
+    }
+
+    protected void addSatellite(String selectedSatellite) {
+       model.addSatellite(selectedSatellite);
     }
 }
