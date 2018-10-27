@@ -34,7 +34,7 @@ public class Main extends JFrame implements ActionListener {
     public Main() {
 
         // set size and visible
-        this.setSize(600,600);
+        this.setSize(800,800);
         this.setVisible(true);
 
         // close on exit
