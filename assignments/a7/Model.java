@@ -82,7 +82,7 @@ public class Model {
         if ((satellitePos.get(id).getX() > parent.getCanvasWidth()) || (satellitePos.get(id).getY() > parent.getCanvasHeight())) {
           directionList.set(id, -1);
         }
-        Point pos = new Point((int)satellitePos.get(id).getX() + 2*directionList.get(id), (int)satellitePos.get(id).getY() + 2*directionList.get(id));
+        Point pos = new Point((int)satellitePos.get(id).getX() + directionList.get(id), (int)satellitePos.get(id).getY() + directionList.get(id));
         if (satellitePos.get(id) == this.selectedPoint) {
           this.selectedPoint = pos;
         }

@@ -1,4 +1,4 @@
-Assignment 6
+Assignment 7
 Woodbury Shrtridge | woodbury.shortridge@tufts.edu
 
 Design Overview:
@@ -13,11 +13,12 @@ satellites are worth 1 point, communication satellites 2 points, and weather sat
 with any other satellite is will destroy it. If a communication collides with
 either a communication satellite or weather satellite it will destroy those, however a weather satellite will only destroy another
 weather satellite. When a satellite is destroyed, the operator will loose the respective points. The score is displayed on the
-left plane and the game tracks the top score of each session.
+left plane and the game tracks the top score of each session. Should the operator choose to zoom in, the right slider can be used.
+This slider will zoom towards the middle of the screen, while keeping the collide and select mechanisms stable.
 
 Outline:
 The Main.java file extends JFrame and creates the main frame for the program. This fame is closed when the operator exits the
-program. The major widgets are added to the program in the main frame: canvas, add controls, rotation controls, and score view. The main
+program. The major widgets are added to the program in the main frame: canvas, add controls, rotation controls, zoom slider, and score view. The main
 frame also instantiates the data model object and score object and controls the timer that is used to animate the satellite model.
 The add controls extends Jpanel and contains several custom objects:
 a label, a satellite selector combo box, and an add button.
@@ -25,6 +26,7 @@ The rotation controls also extend Jpanel and contains several custom objects:
 a label, a speed selector combo box, and a change rotation speed button.
 The model is an object that holds the overall satellite data: position,
 type, ID, rotation speed/direction, direction and selection or removal state. It also provides get and set methods along checking for collisions.
+And methods for changing direction, speed, and scaling from the zoom slider.
 The canvas creates and maintains the drawing canvas and provides the main redrawing routine for it, which creates
 the specific satellites for the interface. In addition, it provides a mouse listener for selecting satellites.
 Each satellite extends an abstract satellite class that stores secret satellite data and builds the Basic satellite body and ID tag.
@@ -42,7 +44,8 @@ clicking it with the mouse (it will turn green when engaged), selecting a new ro
 you launch you will get 1 point if it is for research, 2 points for communication, and 3 points for weather. The object of the games is
 to launch as many satellites that do not collide. If one of your research satellites collides with any other satellite it will destroy. If one
 of you communication satellites collides with either a communication or weather satellite it will destroy it, and your weather satellites
-will only destroy other weather satellites. For each satellite that is destroyed, you will loose it's respective points. Good luck!
+will only destroy other weather satellites. For each satellite that is destroyed, you will loose it's respective points. To zoom in,
+slide the right slider to a desired level. Good luck!
 
 Aggregation (Own) Hierarchy:
 - Main.java
@@ -66,6 +69,7 @@ Inheritance Hierarchy:
 - Main.java (JFame)
 - ScoreState.java (new Class)
 - ScoreView.java (Jpanel)
+- ZoomSlider.java (JSlider)
 - Model.java (new Class)
 - Canvas.java (Jpanel)
 - Satellite.java (Jpanel)
@@ -93,6 +97,7 @@ Uses:
 ~ RotationControl: Uses a panel to create an interface layout for changing rotation speed
 ~ RotationButton & AddButton: Both use a button to add a custom event listener
 ~ SpeedSelector & SatelliteSelector: Both use a ComboBox to add a create a unique Selector
+~ ZoomSlider uses a Jslider to extend methods for the satellite graphics.
 
 Secrets:
 - Main: Contains secret information about the frame count and how to place the views.
@@ -104,3 +109,4 @@ Secrets:
 - CommunicationSatellite: Contains secret information about how to draw the unique wings.
 - RotationControl: Contains secret information about the interface layout
 - addControl: Contains secret information about the interface layout
+- ZoomSlider: Contains secret information about how to create the slider: hashes, scale of change.
