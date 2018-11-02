@@ -38,6 +38,9 @@ $ javac *.java
 Run:
 $ java Main
 
+View UML diagram:
+see UML diagram.pdf
+
 Game play:
 Select the satellite type you want to launch into space. Then click the launch button. You may change the rotation speed of a satellite by
 clicking it with the mouse (it will turn green when engaged), selecting a new rotation speed and clicking the change button. For each satellite
