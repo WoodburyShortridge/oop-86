@@ -1,0 +1,106 @@
+Assignment 6
+Woodbury Shrtridge | woodbury.shortridge@tufts.edu
+
+Design Overview:
+This program is a satellite control user interface. The satellite view displays various types of satellites rotating in space:
+Research, Communications, and Weather satellites. The operator can launch more satellites into space using the ComboBox
+to select satellite type and clicking the launch button. The operator may also select satellites using the mouse. Once a
+satellite is selected it turns green to show it is engaged. When a satellite is engaged, the disabled rotation controls become
+engaged. Then, the operator can select a new rotation speed and change it with the rotation button. If the operator clicks on
+anything other than a satellite, the rotation controls are disabled. The operator may stop the rotation animation by setting a
+rotation speed to 0. The point of the game is to get as many points as possible by launching satellites that don't collide. Research
+satellites are worth 1 point, communication satellites 2 points, and weather satellites 3 points. If a research satellite collides
+with any other satellite is will destroy it. If a communication collides with
+either a communication satellite or weather satellite it will destroy those, however a weather satellite will only destroy another
+weather satellite. When a satellite is destroyed, the operator will loose the respective points. The score is displayed on the
+left plane and the game tracks the top score of each session.
+
+Outline:
+The Main.java file extends JFrame and creates the main frame for the program. This fame is closed when the operator exits the
+program. The major widgets are added to the program in the main frame: canvas, add controls, rotation controls, and score view. The main
+frame also instantiates the data model object and score object and controls the timer that is used to animate the satellite model.
+The add controls extends Jpanel and contains several custom objects:
+a label, a satellite selector combo box, and an add button.
+The rotation controls also extend Jpanel and contains several custom objects:
+a label, a speed selector combo box, and a change rotation speed button.
+The model is an object that holds the overall satellite data: position,
+type, ID, rotation speed/direction, direction and selection or removal state. It also provides get and set methods along checking for collisions.
+The canvas creates and maintains the drawing canvas and provides the main redrawing routine for it, which creates
+the specific satellites for the interface. In addition, it provides a mouse listener for selecting satellites.
+Each satellite extends an abstract satellite class that stores secret satellite data and builds the Basic satellite body and ID tag.
+The different satellite classes extend this abstract by adding unique wings.
+
+Compile:
+$ javac *.java
+
+Run:
+$ java Main
+
+Game play:
+Select the satellite type you want to launch into space. Then click the launch button. You may change the rotation speed of a satellite by
+clicking it with the mouse (it will turn green when engaged), selecting a new rotation speed and clicking the change button. For each satellite
+you launch you will get 1 point if it is for research, 2 points for communication, and 3 points for weather. The object of the games is
+to launch as many satellites that do not collide. If one of your research satellites collides with any other satellite it will destroy. If one
+of you communication satellites collides with either a communication or weather satellite it will destroy it, and your weather satellites
+will only destroy other weather satellites. For each satellite that is destroyed, you will loose it's respective points. Good luck!
+
+Aggregation (Own) Hierarchy:
+- Main.java
+		- ScoreState.java
+		- ScoreView.java
+		- ZoomSlider.java
+		- Model.java
+		- Canvas.java
+        - Satellite.java
+            - ResearchSatellite.java
+            - WeatherSatellite.java
+            - CommunicationSatellite.java
+    - AddControl.java
+        - SatelliteSelector.java
+        - AddButton.java
+    - RotationControl.java
+        - SpeedSelector.java
+        - RotationButton.java
+
+Inheritance Hierarchy:
+- Main.java (JFame)
+- ScoreState.java (new Class)
+- ScoreView.java (Jpanel)
+- Model.java (new Class)
+- Canvas.java (Jpanel)
+- Satellite.java (Jpanel)
+    - ResearchSatellite.java (Satellite)
+    - WeatherSatellite.java (Satellite)
+    - CommunicationSatellite.java (Satellite)
+- AddControl.java (Jpanel)
+- SatelliteSelector.java (JComboBox)
+- AddButton.java (JButton)
+- RotationControl.java (Jpanel)
+- SpeedSelector.java (JComboBox)
+- RotationButton.java (JButton)
+
+Uses:
+~ Main: Uses a frame to create a new window and add two control views and one model.
+~ ScoreState: Uses callbacks from model to maintain a game state data store.
+~ ScoreView: Uses data from ScoreState to display the current and top score.
+~ Model: Uses various ArrayLists to create a data store for the satellites.
+~ Canvas: Uses the data from Model to create a drawing routine.
+~ Satellite: Uses a panel to create an abstract satellite class and uses data from Model to itself.
+    ~ResearchSatellite: Uses a satellite to extend the drawing method uses data from Model to itself.
+    ~WeatherSatellite: Uses a satellite to extend the drawing method uses data from Model to itself.
+    ~CommunicationSatellite: Uses a satellite to extend the drawing method uses data from Model to itself.
+~ AddControl: Uses a panel to create an interface layout for adding satellites
+~ RotationControl: Uses a panel to create an interface layout for changing rotation speed
+~ RotationButton & AddButton: Both use a button to add a custom event listener
+~ SpeedSelector & SatelliteSelector: Both use a ComboBox to add a create a unique Selector
+
+Secrets:
+- Main: Contains secret information about the frame count and how to place the views.
+- ScoreState: Contains secret information about the game state.
+- Model: Contains secret information about how to draw each satellite (position, type, ID, rotation speed, direction and selection or removal state)
+- Satellite: Contains secret information about how to draw the body of a satellite.
+- ResearchSatellite: Contains secret information about how to draw the unique wings.
+- WeatherSatellite: Contains secret information about how to draw the unique wings.
+- CommunicationSatellite: Contains secret information about how to draw the unique wings.
+- RotationControl: Contains secret information about the interface layout
+- addControl: Contains secret information about the interface layout
