@@ -1,3 +1,5 @@
+// Woodbury Shortridge && Sarah Park
+
 let main = null;
 window.onload = () => {
   // create main class
@@ -14,7 +16,7 @@ class Main {
     this.canvas = document.getElementById ("canvas");
     this.gc = this.canvas.getContext("2d");
     this.x = canvas.width/2 - 25;
-    this.y = canvas.height /2 -25;
+    this.y = canvas.height/2 -25;
     this.w = 50;
     this.h = 50;
     this.color = "#000"
