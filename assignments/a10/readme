@@ -1,0 +1,17 @@
+Assignment 10
+Woodbury Shrtridge | woodbury.shortridge@tufts.edu
+
+Design Overview:
+This program is a simplified version of my satellite control user interface built in 3D space. There are
+three different types of satellites, a cube, cylinder, and a special Torus with a spinning dodecahedron in the middle.
+Each object rotates in a independently. The controller may select a satellite with the pointer. A selected satellite will
+turn pink. To destroy a selected satellite the controller can press the "destroy" button. A destroyed satellite remains
+will turn black. The controller can move around the galaxy by zooming and click-dragging the window.
+
+Outline:
+Each satellite is it's own class which extends THREE.Object3D and maintains it's own drawing routine. The Torus also instantiates and has a dodecahedron class.
+All satellites belong to an Orbit class which is added to the scene. There are methods for listening to click position and
+a button class that creates the button and method for destroying satellites.
+
+Run:
+$ open index.html
